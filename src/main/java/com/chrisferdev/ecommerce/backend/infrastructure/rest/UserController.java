@@ -26,7 +26,8 @@ public class UserController {
         return userService.save(user);
     }
 
-    @GetMapping
+    //http://localhost:8085/api/v1/users/4
+    @GetMapping("/{id}")
     public User findById(@PathVariable Integer id){
         return userService.findById(id);
     }

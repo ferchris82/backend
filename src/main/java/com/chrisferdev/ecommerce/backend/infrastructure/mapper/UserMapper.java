@@ -1,6 +1,6 @@
 package com.chrisferdev.ecommerce.backend.infrastructure.mapper;
 
-import org.mapstruct.InheritConfiguration;
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -27,6 +27,6 @@ public interface UserMapper {
     User toUser(UserEntity userEntity);
     Iterable<User> toUsers( Iterable<UserEntity> userEntities);
     
-    @InheritConfiguration
+    @InheritInverseConfiguration
     UserEntity toUserEntity(User user);
 }
