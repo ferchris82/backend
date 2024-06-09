@@ -11,14 +11,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User {
     private Integer id;
-    private Integer username;
-    private Integer firstName;
-    private Integer lastName;
-    private Integer email;
-    private Integer address;
-    private Integer cellphone;
-    private Integer password;
+    private String username;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String address;
+    private String cellphone;
+    private String password;
     private UserType userType;
     private LocalDateTime dateCreated;
+    private LocalDateTime dateUpdated;
+    
 
 }
