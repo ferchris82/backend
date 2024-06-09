@@ -1,4 +1,4 @@
-package com.chrisferdev.ecommerce.backend.infrastructure;
+package com.chrisferdev.ecommerce.backend.infrastructure.entity;
 
 
 import com.chrisferdev.ecommerce.backend.domain.model.UserType;

@@ -6,7 +6,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
 import com.chrisferdev.ecommerce.backend.domain.model.User;
-import com.chrisferdev.ecommerce.backend.infrastructure.UserEntity;
+import com.chrisferdev.ecommerce.backend.infrastructure.entity.UserEntity;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
