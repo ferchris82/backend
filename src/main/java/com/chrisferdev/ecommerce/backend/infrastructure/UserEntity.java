@@ -40,6 +40,6 @@ public class UserEntity {
     @CreationTimestamp
     private LocalDateTime dateCreated;
     @UpdateTimestamp
-    private LocalDateTime dateUpdate;
+    private LocalDateTime dateUpdated;
 
 }
