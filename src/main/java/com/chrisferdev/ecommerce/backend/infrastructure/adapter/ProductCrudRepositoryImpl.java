@@ -16,7 +16,7 @@ public class ProductCrudRepositoryImpl implements IProductRepository {
 
     @Override
     public Product save(Product product) {
-        return productMapper.toProduct(iProductCrudRepository.save(productMapper.tProductEntity(product)))
+        return productMapper.toProduct(iProductCrudRepository.save(productMapper.tProductEntity(product)));
     }
 
     @Override
