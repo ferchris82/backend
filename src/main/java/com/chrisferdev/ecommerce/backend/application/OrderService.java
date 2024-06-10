@@ -11,16 +11,19 @@ public class OrderService {
         this.iOrderRepository = iOrderRepository;
     }
 
-    public Order save(Order order){
+    public Order save(Order order) {
         return this.iOrderRepository.save(order);
     }
-    public Iterable<Order> findAll(){
+
+    public Iterable<Order> findAll() {
         return this.iOrderRepository.findAll();
     }
-    public Iterable<Order> findByUserId(Integer userId){
+
+    public Iterable<Order> findByUserId(Integer userId) {
         return this.iOrderRepository.findByUserId(userId);
     }
-    public void updateStateById(Integer id, String state){
+
+    public void updateStateById(Integer id, String state) {
         this.iOrderRepository.updateStateById(id, state);
     }
 }
