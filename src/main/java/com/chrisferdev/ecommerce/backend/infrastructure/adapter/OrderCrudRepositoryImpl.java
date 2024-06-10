@@ -22,7 +22,7 @@ public class OrderCrudRepositoryImpl implements IOrderRepository {
     public Order save(Order order) {
         OrderEntity orderEntity = iOrderMapper.toOrderEntity(order);
 
-        orderEntity.getOrderProduts().forEach(
+        orderEntity.getOrderProducts().forEach(
                 orderProductEntity -> orderProductEntity.setOrderEntity(orderEntity)
         );
 

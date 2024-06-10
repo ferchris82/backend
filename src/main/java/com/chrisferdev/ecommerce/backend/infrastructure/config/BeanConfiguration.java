@@ -1,5 +1,7 @@
 package com.chrisferdev.ecommerce.backend.infrastructure.config;
 
+import com.chrisferdev.ecommerce.backend.application.OrderService;
+import com.chrisferdev.ecommerce.backend.domain.port.IOrderRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,5 +27,10 @@ public class BeanConfiguration {
     @Bean
     public ProductService productService(IProductRepository iProductRepository){
         return new ProductService(iProductRepository);
+    }
+
+    @Bean
+    public OrderService orderService(IOrderRepository iOrderRepository){
+        return new OrderService(iOrderRepository);
     }
 }
