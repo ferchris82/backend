@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
-    
     private Integer id;
     private String name;
     private String code;
@@ -20,7 +19,7 @@ public class Product {
     private BigDecimal price;
     private LocalDateTime dateCreated;
     private LocalDateTime dateUpdated;
-    private Integer userId; 
+    private  Integer userId;
     private Integer categoryId;
-
 }
+

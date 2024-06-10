@@ -12,7 +12,6 @@ import com.chrisferdev.ecommerce.backend.domain.port.IUserRepository;
 
 @Configuration
 public class BeanConfiguration {
-
     @Bean
     public UserService userService(IUserRepository iUserRepository){
         return new UserService(iUserRepository);
