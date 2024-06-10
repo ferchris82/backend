@@ -3,8 +3,12 @@ package com.chrisferdev.ecommerce.backend.domain.model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import lombok.Data;
+
 import java.util.ArrayList;
 
+@Data
 public class Order {
 
     private Integer id;
