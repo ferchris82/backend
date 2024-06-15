@@ -32,7 +32,7 @@ public class OrderCrudRepositoryImpl implements IOrderRepository {
     @Override
     public Order findById(Integer id) {
         return iOrderMapper.toOrder(iOrderCrudRepository.findById(id).orElseThrow(
-                ()-> new RuntimeException("Orden con Id: "+ id+" no encontrada")
+                ()-> new RuntimeException("Orden con id: "+ id+" no encontrada")
         ));
     }
 
@@ -55,5 +55,6 @@ public class OrderCrudRepositoryImpl implements IOrderRepository {
         }else{
             iOrderCrudRepository.updateStateById(id,OrderState.CONFIRMED);
         }
+
     }
 }

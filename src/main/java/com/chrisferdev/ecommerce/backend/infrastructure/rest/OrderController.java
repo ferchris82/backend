@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("api/v1/orders")
+@RequestMapping("/api/v1/orders")
+@CrossOrigin(origins = "http://localhost:4200")
 @Slf4j
 public class OrderController {
-
     private final OrderService orderService;
 
     public OrderController(OrderService orderService) {
@@ -21,11 +21,13 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<Order> save(@RequestBody Order order){
-        if(order.getOrderState().toString().equals(OrderState.CANCELED.toString())){
+        System.out.println(order.getOrderState());
+        if (order.getOrderState().toString().equals(OrderState.CANCELED.toString()) ){
             order.setOrderState(OrderState.CANCELED);
         }else{
             order.setOrderState(OrderState.CONFIRMED);
         }
+
         return ResponseEntity.ok(orderService.save(order));
     }
 
@@ -42,11 +44,12 @@ public class OrderController {
 
     @GetMapping("{variable}")
     public ResponseEntity<Order> findById(@PathVariable("variable") Integer id){
-        return ResponseEntity.ok(orderService.findById(id));
+        return  ResponseEntity.ok(orderService.findById(id));
     }
 
     @GetMapping("/by-user/{id}")
-    public ResponseEntity<Iterable<Order>> findByUserId(@PathVariable("id") Integer userid){
-        return ResponseEntity.ok(orderService.findByUserId(userid));
+    public ResponseEntity<Iterable<Order>> findByUserId(@PathVariable("id") Integer userId){
+        return ResponseEntity.ok(orderService.findByUserId(userId));
     }
+
 }

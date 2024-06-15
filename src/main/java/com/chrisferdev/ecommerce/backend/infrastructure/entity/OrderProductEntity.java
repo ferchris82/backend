@@ -1,14 +1,9 @@
 package com.chrisferdev.ecommerce.backend.infrastructure.entity;
 
-import java.math.BigDecimal;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.math.BigDecimal;
 
 @Data
 @Entity
@@ -19,8 +14,7 @@ public class OrderProductEntity {
     private Integer id;
     private BigDecimal quantity;
     private BigDecimal price;
-    private Integer productId; 
+    private Integer productId;
     @ManyToOne
     private OrderEntity orderEntity;
-
 }

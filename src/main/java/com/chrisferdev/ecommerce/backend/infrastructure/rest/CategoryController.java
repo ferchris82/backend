@@ -1,23 +1,16 @@
 package com.chrisferdev.ecommerce.backend.infrastructure.rest;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.chrisferdev.ecommerce.backend.application.CategoryService;
 import com.chrisferdev.ecommerce.backend.domain.model.Category;
-
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/v1/admin/categories")
+@RequestMapping("/api/v1/admin/categories")
 @Slf4j
+@CrossOrigin("http://localhost:4200")
 public class CategoryController {
     private final CategoryService categoryService;
 
@@ -26,13 +19,13 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<Category> save(@RequestBody Category category){
+    public ResponseEntity<Category> save(@RequestBody Category category ){
         return new ResponseEntity<>(categoryService.save(category), HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<Iterable<Category>> findAll(){
-        return ResponseEntity.ok(categoryService.findAll());
+    public ResponseEntity<Iterable<Category>>findAll(){
+        return  ResponseEntity.ok(categoryService.findAll()) ;
     }
 
     @GetMapping("/{id}")
@@ -45,5 +38,6 @@ public class CategoryController {
         categoryService.deleteById(id);
         return ResponseEntity.ok().build();
     }
+
 
 }

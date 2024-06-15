@@ -21,6 +21,6 @@ public class User {
     private UserType userType;
     private LocalDateTime dateCreated;
     private LocalDateTime dateUpdated;
-    
+
 
 }

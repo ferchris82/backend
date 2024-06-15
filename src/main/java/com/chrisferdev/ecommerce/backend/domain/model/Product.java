@@ -1,5 +1,6 @@
 package com.chrisferdev.ecommerce.backend.domain.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,4 +23,3 @@ public class Product {
     private  Integer userId;
     private Integer categoryId;
 }
-
