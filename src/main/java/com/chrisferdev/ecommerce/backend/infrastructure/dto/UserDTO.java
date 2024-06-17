@@ -1,2 +1,4 @@
-package com.chrisferdev.ecommerce.backend.infrastructure.dto;public record UserDTO() {
+package com.chrisferdev.ecommerce.backend.infrastructure.dto;
+
+public record UserDTO(String username, String password) {
 }
