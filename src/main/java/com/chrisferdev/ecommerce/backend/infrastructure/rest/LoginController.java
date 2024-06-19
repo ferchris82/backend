@@ -1,5 +1,7 @@
 package com.chrisferdev.ecommerce.backend.infrastructure.rest;
 
+import com.chrisferdev.ecommerce.backend.application.UserService;
+import com.chrisferdev.ecommerce.backend.domain.model.User;
 import com.chrisferdev.ecommerce.backend.infrastructure.dto.JWTClient;
 import com.chrisferdev.ecommerce.backend.infrastructure.dto.UserDTO;
 import com.chrisferdev.ecommerce.backend.infrastructure.jwt.JWTGenerator;
@@ -10,22 +12,22 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/security")
+@CrossOrigin(origins = "http://localhost:4200")
 @Slf4j
 public class LoginController {
 
     private final AuthenticationManager authenticationManager;
     private final JWTGenerator jwtGenerator;
+    private final UserService userService;
 
-    public LoginController(AuthenticationManager authenticationManager, JWTGenerator jwtGenerator) {
+    public LoginController(AuthenticationManager authenticationManager, JWTGenerator jwtGenerator, UserService userService) {
         this.authenticationManager = authenticationManager;
         this.jwtGenerator = jwtGenerator;
+        this.userService = userService;
     }
 
     @PostMapping("/login")
@@ -45,8 +47,10 @@ public class LoginController {
                 .get()
                 .toString());
 
+        User user = userService.findByEmail(userDTO.username());
+
         String token = jwtGenerator.getToken(userDTO.username());
-        JWTClient jwtClient = new JWTClient(token);
+        JWTClient jwtClient = new JWTClient(user.getId(), token, user.getUserType().toString());
 
         return new ResponseEntity<>(jwtClient, HttpStatus.OK);
     }
